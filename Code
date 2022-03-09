@@ -1,0 +1,45 @@
+def leap_year(y):
+    if (y % 100 == 0):
+        if (y % 400 == 0):
+            return 1
+        else:
+            return 0
+    elif (y %4 == 0):
+        return 1 
+    else:
+        return 0
+
+def number_of_days(m, y):
+    if (m == 1 or m == 3 or m == 7 or m == 5 or m == 10 or m == 12 or m == 8):
+        return 31
+    elif (m == 2):
+        if (leap_year(y) == 1):
+            return 29
+        else:
+            return 28
+    else:
+        return 30
+def days_left(d, m, y):
+    days = 0
+    for i in range(m + 1, 13):
+        days += number_of_days(i, y)
+    days += number_of_days(m, y)
+    days = days - d
+    return days
+
+
+    
+        
+
+print("Please enter a date")
+day = int(input("Day: "))
+month = int(input("Month: "))
+year = int(input("Year: "))
+print("Menu: ")
+print("1.) Calculate the number of days in the given month.")
+print("2.) Calculate the number of days left in the given year.")
+option = int(input("Please select one: "))
+if (option == 1):
+    print(number_of_days(month, year))
+else:
+    print(days_left(day, month, year))
